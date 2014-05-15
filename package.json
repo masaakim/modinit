@@ -1,0 +1,27 @@
+{
+  "name": "modinit",
+  "version": "0.0.1",
+  "description": "Initialize node packaged module",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/morishitter/modinit/git"
+  },
+  "keywords": [
+    "initialize",
+    "init",
+    "module"
+  ],
+  "author": "Masaaki Morishita",
+  "license": "MIT",
+  "bin": {
+    "modinit": "cmd.js"
+  },
+  "dependencies": {
+    "commander": "^2.2.0",
+    "prompt": "^0.2.12"
+  }
+}
