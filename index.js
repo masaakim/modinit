@@ -9,8 +9,7 @@ function Modinit (res) {
   this.github = res.github;
   this.author = res.author;
   this.mail = res.mail;
-  if (res.travis === "Y") this.travis = true;
-  else this.travis = false;
+  this.travis = res.travis;
   this.testfw = res.testfw;
   this.travis = res.travis;
   this.readme = res.readme;
@@ -18,12 +17,15 @@ function Modinit (res) {
 }
 
 Modinit.prototype.create = function () {
+  if (this.travis === "Y") var travis = true;
+  else var travis = false;
+
   return {
     "github": this.github,
     "author": this.author,
     "mail": this.mail,
     "testfw": this.testfw,
-    "travis": this.travis,
+    "travis": travis,
     "readme": this.readme,
     "license": this.license
   };
