@@ -54,6 +54,7 @@ program
         "mail": result.mail,
         "testfw": result.testfw,
         "travis": travis,
+        "readme": result.readme,
         "license": result.license
       };
 
