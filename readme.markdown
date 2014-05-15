@@ -1,4 +1,4 @@
-# modinit
+# modinit  [![Build Status](https://travis-ci.org/morishitter/modinit.svg)](https://travis-ci.org/morishitter/modinit)
 
 Initialize node packaged module.
 
