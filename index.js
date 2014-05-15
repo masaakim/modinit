@@ -32,16 +32,7 @@ Modinit.prototype.create = function () {
     if (err) {
       console.log(err);
       return false;
-    } else {
-      console.log("");
-      console.log("GitHub username: " + result.github.cyan);
-      console.log("Author: " + result.author.cyan);
-      console.log("Mail: " + result.mail.cyan);
-      console.log("Testing framework: " + result.testfw.cyan);
-      console.log("Use travis: " + result.travis.cyan);
-      console.log("README style: " + result.readme.cyan);
-      console.log("License: " + result.license.cyan);
-      return true;
     }
   });
+  return true;
 };

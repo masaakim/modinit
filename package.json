@@ -18,7 +18,7 @@
   "author": "Masaaki Morishita",
   "license": "MIT",
   "bin": {
-    "modinit": "cmd.js"
+    "modinit": "bin/modinit"
   },
   "dependencies": {
     "commander": "^2.2.0",
