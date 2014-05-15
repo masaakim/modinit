@@ -48,7 +48,8 @@ program
       if (err) console.log(err);
 
       var modinit = new Modinit(result);
-      if (modinit.create(result)) {
+      var modinitrc = modinit.create();
+      if (modinitrc) {
         console.log("");
         console.log("GitHub username: " + result.github.cyan);
         console.log("Author: " + result.author.cyan);
@@ -57,8 +58,14 @@ program
         console.log("Use travis: " + result.travis.cyan);
         console.log("README style: " + result.readme.cyan);
         console.log("License: " + result.license.cyan);
-        console.log("");
-        console.log("Create '.modinitrc'.");
+
+        fs.writeFile('modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
+          if (err) console.log(err);
+          else {
+            console.log("");
+            console.log("Success! Create '.modinitrc'".green);
+          }
+        });
       }
     });
   });

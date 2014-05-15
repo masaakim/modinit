@@ -18,7 +18,7 @@ function Modinit (res) {
 }
 
 Modinit.prototype.create = function () {
-  var modinitrc = {
+  return {
     "github": this.github,
     "author": this.author,
     "mail": this.mail,
@@ -27,6 +27,7 @@ Modinit.prototype.create = function () {
     "readme": this.readme,
     "license": this.license
   };
+  /*
 
   fs.writeFile('modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
     if (err) {
@@ -35,4 +36,5 @@ Modinit.prototype.create = function () {
     }
   });
   return true;
+ */
 };
