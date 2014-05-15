@@ -29,14 +29,4 @@ Modinit.prototype.create = function () {
     "readme": this.readme,
     "license": this.license
   };
-  /*
-
-  fs.writeFile('modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
-    if (err) {
-      console.log(err);
-      return false;
-    }
-  });
-  return true;
- */
 };
