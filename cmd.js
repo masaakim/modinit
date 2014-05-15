@@ -4,6 +4,7 @@ var fs = require('fs');
 var program = require('commander');
 var prompt = require('prompt');
 var pkg = require('./package.json');
+var Modinit = require('./');
 
 program.version(pkg.version)
 
@@ -44,37 +45,12 @@ program
         }
       }
     }, function (err, result) {
-      var travis;
-      if (result.travis === "Y") travis = true;
-      else travis = false;
+      if (err) console.log(err);
 
-      var modinitrc = {
-        "github": result.github,
-        "author": result.author,
-        "mail": result.mail,
-        "testfw": result.testfw,
-        "travis": travis,
-        "readme": result.readme,
-        "license": result.license
-      };
-
-      console.log("");
-      console.log("GitHub username: " + result.github.cyan);
-      console.log("Author: " + result.author.cyan);
-      console.log("Mail: " + result.mail.cyan);
-      console.log("Testing framework: " + result.testfw.cyan);
-      console.log("Use travis: " + result.travis.cyan);
-      console.log("README style: " + result.readme.cyan);
-      console.log("License: " + result.license.cyan);
-      console.log("");
-
-      fs.writeFile('modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Create '.modinitrc' in your home directory.");
-        }
-      });
+      if (modinit.create(result)) {
+        console.log("");
+        console.log("Create '.modinitrc'.");
+      }
     });
   });
 
