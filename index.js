@@ -3,30 +3,21 @@ var fs = require('fs');
 
 module.exports = Modinit;
 
-function Modinit (res) {
-  if (!(this instanceof Modinit)) return new Modinit(res);
-
-  this.github = res.github;
-  this.author = res.author;
-  this.mail = res.mail;
-  this.travis = res.travis;
-  this.testfw = res.testfw;
-  this.travis = res.travis;
-  this.readme = res.readme;
-  this.license = res.license;
+function Modinit () {
+  if (!(this instanceof Modinit)) return new Modinit();
 }
 
-Modinit.prototype.create = function () {
-  if (this.travis === "Y") var travis = true;
+Modinit.prototype.create = function (res) {
+  if (res.travis === "Y") var travis = true;
   else var travis = false;
 
   return {
-    "github": this.github,
-    "author": this.author,
-    "mail": this.mail,
-    "testfw": this.testfw,
+    "github": res.github,
+    "author": res.author,
+    "mail": res.mail,
+    "testfw": res.testfw,
     "travis": travis,
-    "readme": this.readme,
-    "license": this.license
+    "readme": res.readme,
+    "license": res.license
   };
 };

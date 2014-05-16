@@ -13,8 +13,8 @@ test('create', function (t) {
     "license": "MIT"
   };
 
-  var modinit = new Modinit(prompt);
-  var result = modinit.create();
+  var modinit = new Modinit();
+  var result = modinit.create(prompt);
 
   var expected = {
     "github": "morishitter",
