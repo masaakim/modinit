@@ -31,22 +31,33 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
   var moduleName = _.slugify(prompt.moduleName);
   var moduleVarName = _.camelize(prompt.moduleName);
 
-  readme({
+  readme = readme({
     'moduleName': moduleName,
     'description': prompt.description,
     'github': modinitrc.github,
     'author': modinitrc.author
   });
-  _package({
+
+  _package = _package({
     'moduleName': moduleName,
     'description': prompt.description,
     'github': modinitrc.github,
     'author': modinitrc.author
   });
-  license({
+
+  license = license({
     'author': modinitrc.author
   });
-  cmd({
+
+  cmd = cmd({
     'moduleVarName': moduleVarName
   });
+
+  var res = {};
+  res.readme = readme;
+  res._package = _package;
+  res.license = license;
+  res.cmd = cmd;
+
+  return res;
 };
