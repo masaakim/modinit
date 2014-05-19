@@ -81,7 +81,10 @@ program
     options.binary = program.binary;
 
     var modinit = new Modinit();
-    modinit.template(moduleName, modinitrc, options);
+    var templates = modinit.template(moduleName, modinitrc, options);
+    if (modinit.build(templates)) {
+      console.log('scaffold!!');
+    }
   });
 
 program.parse(process.argv);
