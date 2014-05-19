@@ -6,7 +6,9 @@ var prompt = require('prompt');
 var pkg = require('../package.json');
 var Modinit = require('../');
 
-program.version(pkg.version)
+program
+  .version(pkg.version)
+  .option('-b, --binary', 'create with binary file')
 
 program
   .command('create')
@@ -59,7 +61,7 @@ program
         console.log("README style: " + result.readme.cyan);
         console.log("License: " + result.license.cyan);
 
-        fs.writeFile('~/modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
+        fs.writeFile('./modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
           if (err) throw err;
           else {
             console.log("");
@@ -68,6 +70,18 @@ program
         });
       }
     });
+  });
+
+program
+  .command('init <moduleName>')
+  .description('scaffold node packaged module')
+  .action(function (moduleName) {
+    var modinitrc = fs.readFileSync(modinit.json);
+    var options = {};
+    options.binary = program.binary;
+
+    var modinit = new Modinit();
+    modinit.template(moduleName, modinitrc, options);
   });
 
 program.parse(process.argv);
