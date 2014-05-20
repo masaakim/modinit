@@ -53,12 +53,7 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
   };
   if (options.bin) package_obj['cmd'] = true;
 
-  _package = _package({
-    'moduleName': moduleName,
-    'description': prompt.description,
-    'github': modinitrc.github,
-    'author': modinitrc.author
-  });
+  _package = _package(package_obj);
 
   license = license({
     'author': modinitrc.author
