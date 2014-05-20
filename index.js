@@ -1,5 +1,6 @@
 
 var fs = require('fs');
+var _ = require('lodash');
 
 module.exports = Modinit;
 
@@ -61,11 +62,11 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
   res.readmeStyle = prompt.readme;
   res._package = _package;
   res.license = license;
-  res.cmd = cmd;
   res._index = _index;
   res.test = test;
   res.moduleName = moduleName;
   res.moduleVarName = moduleVarName;
+  if (options.bin) res.cmd = cmd;
   if (modinitrc.travis) res.travis = travis;
 
   return res;

@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "commander": "^2.2.0",
-    "prompt": "^0.2.12"
+    "prompt": "^0.2.12",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "tap": "^0.4.9",
