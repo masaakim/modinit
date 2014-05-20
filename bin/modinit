@@ -8,7 +8,7 @@ var Modinit = require('../');
 
 program
   .version(pkg.version)
-  .option('-b, --binary', 'create with binary file')
+  .option('-b, --bin', 'create with executable file')
 
 program
   .command('create')
@@ -78,7 +78,7 @@ program
   .action(function (moduleName) {
     var modinitrc = fs.readFileSync(modinit.json);
     var options = {};
-    options.binary = program.binary;
+    options.bin = program.bin;
 
     var modinit = new Modinit();
     var templates = modinit.template(moduleName, modinitrc, options);
