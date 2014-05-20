@@ -76,7 +76,7 @@ program
   .command('init <moduleName>')
   .description('scaffold node packaged module')
   .action(function (moduleName) {
-    var modinitrc = fs.readFileSync(modinit.json);
+    var modinitrc = fs.readFileSync('./modinit.json');
     var options = {};
     options.bin = program.bin;
 
