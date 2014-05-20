@@ -76,6 +76,35 @@ program
   .command('init <moduleName>')
   .description('scaffold node packaged module')
   .action(function (moduleName) {
+    prompt.message = '[?]'.magenta;
+    prompt.delimiter = ':';
+
+    prompt.start();
+
+    prompt.get({
+      properties: {
+        moduleName: {
+          description: "module name".magenta
+        },
+        description: {
+          description: "description".magenta
+        },
+        keywords: {
+          description: "keywords".magenta
+        }
+      }
+    }, function (err, result) {
+      var modinitrc = fs.readFileSync('./modinit.json');
+      var options = {};
+      options.bin = program.bin;
+
+      var modinit = new Modinit();
+      var templates = modinit.template(moduleName, modinitrc, options);
+      if (modinit.build(templates)) {
+        console.log('scaffold!!');
+      }
+    });
+    /*
     var modinitrc = fs.readFileSync('./modinit.json');
     var options = {};
     options.bin = program.bin;
@@ -85,6 +114,7 @@ program
     if (modinit.build(templates)) {
       console.log('scaffold!!');
     }
+   */
   });
 
 program.parse(process.argv);

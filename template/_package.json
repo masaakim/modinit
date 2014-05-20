@@ -1,7 +1,7 @@
 {
   "name": "<%= moduleName %>",
   "version": "0.0.1",
-  "description": "<%= dequote(description) %>",
+  "description": "<%= description %>",
   "main": "index.js",
   "scripts": {
     "test": "tape test"
@@ -14,7 +14,7 @@
     "url": "git://github.com/<%= github %>/<%= moduleName %>/git"
   },
   "keywords": <%= JSON.stringify(keywords) %>,
-  "author": "<%= dequote(author) %>",
+  "author": "<%= author %>",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

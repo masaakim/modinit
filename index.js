@@ -28,13 +28,15 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
   var _package = _.template(fs.readFileSync('template/_package.json').toString());
   var license = _.template(fs.readFileSync('template/LICENSE').toString());
   var cmd = _.template(fs.readFileSync('template/cmd.js').toString());
+  var test = _.template(fs.readFileSync('template/test.js').toString());
   var _index = fs.readFileSync('template/_index.js').toString();
   var travis = fs.readFileSync('template/travis.yml').toString();
   var gitignore = fs.readFileSync('template/gitignore').toString();
-  var test = fs.readFileSync('template/test.js').toString();
 
-  var moduleName = _.slugify(prompt.moduleName);
-  var moduleVarName = _.camelize(prompt.moduleName);
+  // var moduleName = _.slugify(prompt.moduleName);
+  // var moduleVarName = _.camelize(prompt.moduleName);
+  var moduleName = prompt.moduleName;
+  var moduleVarName = prompt.moduleName;
 
   readme = readme({
     'moduleName': moduleName,
@@ -42,6 +44,14 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
     'github': modinitrc.github,
     'author': modinitrc.author
   });
+
+  var package_obj = {
+    'moduleName': moduleName,
+    'description': prompt.description,
+    'github': modinitrc.github,
+    'author': modinitrc.author
+  };
+  if (options.bin) package_obj['cmd'] = true;
 
   _package = _package({
     'moduleName': moduleName,
@@ -56,6 +66,10 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
 
   cmd = cmd({
     'moduleVarName': moduleVarName
+  });
+
+  test = test({
+    'testfw': modinitrc.testfw
   });
 
   var res = {};
