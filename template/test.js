@@ -1,6 +1,6 @@
 
 var test = require('<%= testfw %>');
-var <%= moduleVarName %> = require('..');
+var <%= moduleName %> = require('..');
 
 test('description', function (t) {
   t.end();

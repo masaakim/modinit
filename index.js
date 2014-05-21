@@ -70,11 +70,12 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   });
 
   cmd = cmd({
-    'moduleVarName': moduleVarName
+    'moduleName': moduleVarName
   });
 
   test = test({
-    'testfw': modinitrc.testfw
+    'testfw': modinitrc.testfw,
+    'moduleName': moduleVarName
   });
 
   var res = {};

@@ -3,7 +3,7 @@
 var fs = require('fs');
 var program = require('commander');
 var pkg = require('../package.json');
-var <%= moduleVarName %> = require('..');
+var <%= moduleName %> = require('..');
 
 
 program.version(pkg.version)
