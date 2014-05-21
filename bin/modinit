@@ -95,27 +95,17 @@ program
         }
       }
     }, function (err, result) {
-      var modinitrc = fs.readFileSync('./modinit.json');
+      var modinitrc = fs.readFileSync('./modinit.json').toString();
+      modinitrc = JSON.parse(modinitrc);
       var options = {};
       if (program.bin) options.bin = program.bin;
 
       var modinit = new Modinit();
-      var templates = modinit.template(moduleName, modinitrc, result, options);
+      var templates = modinit.template(result, modinitrc, result, options);
       if (modinit.build(templates)) {
         console.log('scaffold!!');
       }
     });
-    /*
-    var modinitrc = fs.readFileSync('./modinit.json');
-    var options = {};
-    options.bin = program.bin;
-
-    var modinit = new Modinit();
-    var templates = modinit.template(moduleName, modinitrc, options);
-    if (modinit.build(templates)) {
-      console.log('scaffold!!');
-    }
-   */
   });
 
 program.parse(process.argv);

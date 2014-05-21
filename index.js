@@ -34,8 +34,6 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   var travis = fs.readFileSync('template/travis.yml').toString();
   var gitignore = fs.readFileSync('template/gitignore').toString();
 
-  // var moduleName = _.slugify(prompt.moduleName);
-  // var moduleVarName = _.camelize(prompt.moduleName);
   var moduleName = prompt.moduleName;
   var moduleVarName = prompt.moduleName;
 
@@ -81,7 +79,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
 
   var res = {};
   res.readme = readme;
-  res.readmeStyle = prompt.readme;
+  res.readmeStyle = modinitrc.readme;
   res._package = _package;
   res.license = license;
   res._index = _index;
@@ -100,47 +98,49 @@ Modinit.prototype.build = function (templates) {
     if (err) throw err;
   });
 
-  mkdirp(templates.moduleName + '/bin', function (err) {
-    if (err) throw err;
-  });
+  if (templates.cmd) {
+    mkdirp(templates.moduleName + '/bin', function (err) {
+      if (err) throw err;
+    });
+  }
 
   mkdirp(templates.moduleName + '/test', function (err) {
     if (err) throw err;
   });
 
 
-  fs.writeFile(moduleName + '/index.js', templates._index, function (err) {
+  fs.writeFile(templates.moduleName + '/index.js', templates._index, function (err) {
     if (err) throw err;
   });
 
-  fs.writeFile(moduleName + '/test/test.js', templates.test, function (err) {
+  fs.writeFile(templates.moduleName + '/test/test.js', templates.test, function (err) {
     if (err) throw err;
   });
 
-  fs.writeFile(moduleName + '/' + templates.readmeStyle, templates.readme, function (err) {
+  fs.writeFile(templates.moduleName + '/' + templates.readmeStyle, templates.readme, function (err) {
     if (err) throw err;
   });
 
-  fs.writeFile(moduleName + '.gitignore', templates.gitignore, function (err) {
+  fs.writeFile(templates.moduleName + '/.gitignore', templates.gitignore, function (err) {
     if (err) throw err;
   });
 
-  fs.writeFile(moduleName + '/LICENSE', templates.license, function (err) {
+  fs.writeFile(templates.moduleName + '/LICENSE', templates.license, function (err) {
     if (err) throw err;
   });
 
-  fs.writeFile(moduleName + '/package.json', templates._package, function (err) {
+  fs.writeFile(templates.moduleName + '/package.json', templates._package, function (err) {
     if (err) throw err;
   });
 
   if (templates.cmd) {
-    fs.writeFile(moduleName + '/bin' + modulename, templates.cmd, function (err) {
+    fs.writeFile(templates.moduleName + '/bin' + modulename, templates.cmd, function (err) {
       if (err) throw err;
     });
   }
 
   if (templates.travis) {
-    fs.writeFile(moduleName + '.travis.yml', templates.travis, function (err) {
+    fs.writeFile(templates.moduleName + '/.travis.yml', templates.travis, function (err) {
       if (err) throw err;
     });
   }
