@@ -2,9 +2,17 @@
 
 Initialize node packaged module.
 
+## Installation
+
+```shell
+$ npm install -g modinit
+```
+
 ## How to use
 
-Create `modinit.json` in your home directory.
+Create `modinit.json` in current directory.
+
+`modinit.json` is configuration file to initialize your node modules.
 
 ```shell
 $ modinit create
@@ -24,7 +32,15 @@ Ex:
 }
 ```
 
-And, initialize module.
+Supporting Testing FW:
+
+- tape
+
+comming soon:
+
+- mocha
+
+And, initialize module based on your `modinit.json`.
 
 ```shell
 $ modinit init <module-name>
