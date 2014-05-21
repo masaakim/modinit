@@ -4,7 +4,7 @@ Initialize node packaged module.
 
 ## How to use
 
-1. Create `.modinitrc` in your home directory.
+Create `modinit.json` in your home directory.
 
 ```shell
 $ modinit create
@@ -22,6 +22,12 @@ Ex:
   "test": "tape",
   "travis": true
 }
+```
+
+And, initialize module.
+
+```shell
+$ modinit init <module-name>
 ```
 
 ##License
