@@ -23,7 +23,7 @@ Modinit.prototype.create = function (res) {
   };
 };
 
-Modinit.prototype.template = function (prompt, modinitrc, options) {
+Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   var readme = _.template(fs.readFileSync('template/readme.markdown').toString());
   var _package = _.template(fs.readFileSync('template/_package.json').toString());
   var license = _.template(fs.readFileSync('template/LICENSE').toString());
@@ -38,6 +38,14 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
   var moduleName = prompt.moduleName;
   var moduleVarName = prompt.moduleName;
 
+  var keywords = function (val) {
+    return val.split(',').map(function (v) {
+      return v.trim();
+    }).filter(function (v) {
+      return v.length > 0;
+    });
+  }(result['keywords']);
+
   readme = readme({
     'moduleName': moduleName,
     'description': prompt.description,
@@ -49,9 +57,11 @@ Modinit.prototype.template = function (prompt, modinitrc, options) {
     'moduleName': moduleName,
     'description': prompt.description,
     'github': modinitrc.github,
-    'author': modinitrc.author
+    'author': modinitrc.author,
+    'keywords': keywords
   };
   if (options.bin) package_obj['cmd'] = true;
+  else package_obj['cmd'] = false;
 
   _package = _package(package_obj);
 

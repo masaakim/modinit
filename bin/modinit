@@ -97,10 +97,10 @@ program
     }, function (err, result) {
       var modinitrc = fs.readFileSync('./modinit.json');
       var options = {};
-      options.bin = program.bin;
+      if (program.bin) options.bin = program.bin;
 
       var modinit = new Modinit();
-      var templates = modinit.template(moduleName, modinitrc, options);
+      var templates = modinit.template(moduleName, modinitrc, result, options);
       if (modinit.build(templates)) {
         console.log('scaffold!!');
       }
