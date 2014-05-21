@@ -25,14 +25,14 @@ Modinit.prototype.create = function (res) {
 };
 
 Modinit.prototype.template = function (prompt, modinitrc, result, options) {
-  var readme = _.template(fs.readFileSync('template/readme.markdown').toString());
-  var _package = _.template(fs.readFileSync('template/_package.json').toString());
-  var license = _.template(fs.readFileSync('template/LICENSE').toString());
-  var cmd = _.template(fs.readFileSync('template/cmd.js').toString());
-  var test = _.template(fs.readFileSync('template/test.js').toString());
-  var _index = fs.readFileSync('template/_index.js').toString();
-  var travis = fs.readFileSync('template/travis.yml').toString();
-  var gitignore = fs.readFileSync('template/gitignore').toString();
+  var readme = _.template(fs.readFileSync('./template/readme.markdown').toString());
+  var _package = _.template(fs.readFileSync('./template/_package.json').toString());
+  var license = _.template(fs.readFileSync('./template/LICENSE').toString());
+  var cmd = _.template(fs.readFileSync('./template/cmd.js').toString());
+  var test = _.template(fs.readFileSync('./template/test.js').toString());
+  var _index = fs.readFileSync('./template/_index.js').toString();
+  var travis = fs.readFileSync('./template/travis.yml').toString();
+  var gitignore = fs.readFileSync('./template/gitignore').toString();
 
   var moduleName = prompt.moduleName;
   var moduleVarName = prompt.moduleName;

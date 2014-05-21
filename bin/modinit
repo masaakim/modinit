@@ -12,7 +12,7 @@ program
 
 program
   .command('create')
-  .description('create .modinitrc')
+  .description('create modinit.json')
   .action(function () {
     prompt.message = '[?]'.magenta;
     prompt.delimiter = ':';
@@ -65,7 +65,7 @@ program
           if (err) throw err;
           else {
             console.log("");
-            console.log("Success! Create '.modinitrc'".green);
+            console.log("Success! Create 'modinit.json'".green);
           }
         });
       }
