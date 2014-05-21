@@ -84,7 +84,8 @@ program
     prompt.get({
       properties: {
         moduleName: {
-          description: "module name".magenta
+          description: "module name".magenta,
+          default: moduleName
         },
         description: {
           description: "description".magenta
