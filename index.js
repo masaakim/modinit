@@ -1,5 +1,6 @@
 
 var fs = require('fs');
+var path = require('path');
 var _ = require('lodash');
 var mkdirp = require('mkdirp');
 
@@ -25,14 +26,27 @@ Modinit.prototype.create = function (res) {
 };
 
 Modinit.prototype.template = function (prompt, modinitrc, result, options) {
-  var readme = _.template(fs.readFileSync('./template/readme.markdown').toString());
-  var _package = _.template(fs.readFileSync('./template/_package.json').toString());
-  var license = _.template(fs.readFileSync('./template/LICENSE').toString());
-  var cmd = _.template(fs.readFileSync('./template/cmd.js').toString());
-  var test = _.template(fs.readFileSync('./template/test.js').toString());
-  var _index = fs.readFileSync('./template/_index.js').toString();
-  var travis = fs.readFileSync('./template/travis.yml').toString();
-  var gitignore = fs.readFileSync('./template/gitignore').toString();
+  var templatePath;
+  module.paths.some(function (gmp) {
+    console.log(path.join(gmp, 'modinit/template'))
+    fs.exists(path.join(gmp, 'modinit/template'), function (exist) {
+      if (exist) {
+        console.log("aaaaaaaaaaa")
+        templatePath = path.join(gmp, 'modinit/template');
+        return false;
+      }
+    })
+  });
+  console.log(templatePath)
+
+  var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
+  var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
+  var license = _.template(fs.readFileSync(templatePath + '/LICENSE').toString());
+  var cmd = _.template(fs.readFileSync(templatePath + '/cmd.js').toString());
+  var test = _.template(fs.readFileSync(templatePath + '/test.js').toString());
+  var _index = fs.readFileSync(templatePath + '/_index.js').toString();
+  var travis = fs.readFileSync(templatePath + '/travis.yml').toString();
+  var gitignore = fs.readFileSync(templatePath + '/gitignore').toString();
 
   var moduleName = prompt.moduleName;
   var moduleVarName = prompt.moduleName;
