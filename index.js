@@ -40,7 +40,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   });
   console.log(templatePath)
   */
-  var templatePath = '/usr/local/lib/npm_modules/modinit/template';
+  var templatePath = '/usr/local/lib/node_modules/modinit/template';
 
   var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
   var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
