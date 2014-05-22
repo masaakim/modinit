@@ -26,6 +26,7 @@ Modinit.prototype.create = function (res) {
 };
 
 Modinit.prototype.template = function (prompt, modinitrc, result, options) {
+  /*
   var templatePath;
   module.paths.some(function (gmp) {
     console.log(path.join(gmp, 'modinit/template'))
@@ -38,6 +39,8 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
     })
   });
   console.log(templatePath)
+  */
+  var templatePath = '/usr/local/lib/npm_modules/modinit/template';
 
   var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
   var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
