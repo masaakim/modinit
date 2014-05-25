@@ -151,7 +151,7 @@ Modinit.prototype.build = function (templates) {
   });
 
   if (templates.cmd) {
-    fs.writeFile(templates.moduleName + '/bin' + moduleName, templates.cmd, function (err) {
+    fs.writeFile(templates.moduleName + '/bin' + templates.moduleName, templates.cmd, function (err) {
       if (err) throw err;
     });
   }
