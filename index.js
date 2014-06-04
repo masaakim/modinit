@@ -3,6 +3,9 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var mkdirp = require('mkdirp');
+var config = require('node-prefix');
+var nodePrefix = config.prefix();
+var globalModulePath = config.global('modinit');
 
 module.exports = Modinit;
 
@@ -26,21 +29,7 @@ Modinit.prototype.create = function (res) {
 };
 
 Modinit.prototype.template = function (prompt, modinitrc, result, options) {
-  /*
-  var templatePath;
-  module.paths.some(function (gmp) {
-    console.log(path.join(gmp, 'modinit/template'))
-    fs.exists(path.join(gmp, 'modinit/template'), function (exist) {
-      if (exist) {
-        console.log("aaaaaaaaaaa")
-        templatePath = path.join(gmp, 'modinit/template');
-        return false;
-      }
-    })
-  });
-  console.log(templatePath)
-  */
-  var templatePath = '/usr/local/lib/node_modules/modinit/template';
+  var templatePath = globalModulePath + '/template';
 
   var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
   var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
