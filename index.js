@@ -119,7 +119,7 @@ Modinit.prototype.build = function (templates) {
     if (err) throw err;
   });
 
-  fs.writeFile(templates.moduleName + '/test/test.js', templates.test, function (err) {
+  fs.writeFile(templates.moduleName + '/test/index.js', templates.test, function (err) {
     if (err) throw err;
   });
 

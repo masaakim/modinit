@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var program = require('commander');
-var pkg = require('../package.json');
-var <%= moduleName %> = require('..');
-
-
-program.version(pkg.version)
-
-program.parse(process.argv)
+var fs = require('fs')
+var pkg = require('../package.json')
+var <%= moduleName %> = require('..')
