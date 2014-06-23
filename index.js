@@ -159,10 +159,6 @@ Modinit.prototype.rename = function (afterModName) {
     var BeforeModName = beforeModName.charAt(0).toUpperCase() + beforeModName.slice(1);
     var AfterModName = afterModName.charAt(0).toUpperCase() + afterModName.slice(1);
 
-    console.log(beforeModName)
-    console.log(BeforeModName)
-    console.log(AfterModName)
-
     changeFiles = [
          './package.json',
          './readme.markdown',
@@ -174,11 +170,10 @@ Modinit.prototype.rename = function (afterModName) {
         var fileStr = fs.readFileSync(changeFile).toString();
         var renamed = fileStr.replace(new RegExp(beforeModName, 'g'), afterModName);
         renamed = renamed.replace(new RegExp(BeforeModName, 'g'), AfterModName);
-        console.log(renamed)
-        /*
-        fs.writeFileSync(changeFile, after, function (err) {
+
+        fs.writeFile(changeFile, renamed, function (err) {
             if (err) throw err;
         });
-       */
+        console.log("Renamed to " + afterModName);
     });
 };
