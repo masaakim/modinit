@@ -155,8 +155,7 @@ Modinit.prototype.build = function (templates) {
 };
 
 Modinit.prototype.rename = function (afterModName) {
-    beforeModName = path.basename(process.pwd);
-    console.log(beforeModName)
+    beforeModName = path.basename(process.cwd());
 
     changeFiles = [
         './package.json',
@@ -167,6 +166,6 @@ Modinit.prototype.rename = function (afterModName) {
 
     changeFiles.forEach(function (changeFile) {
         var fileStr = fs.readFileSync(changeFile).toString();
-        // fileStr.replace(beforeModName, afterModName);
+        fileStr.replace(beforeModName, afterModName);
     });
 };

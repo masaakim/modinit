@@ -7,105 +7,114 @@ var pkg = require('../package.json');
 var Modinit = require('../');
 
 program
-  .version(pkg.version)
-  .option('-b, --bin', 'create with executable file')
+.version(pkg.version)
+.option('-b, --bin', 'create with executable file')
 
 program
-  .command('create')
-  .description('create modinit.json')
-  .action(function () {
+.command('create')
+.description('create modinit.json')
+.action(function () {
     prompt.message = '[?]'.magenta;
     prompt.delimiter = ':';
 
     prompt.start();
 
     prompt.get({
-      properties: {
-        github: {
-          description: "GitHub username".magenta
-        },
-        author: {
-          description: "Author".magenta
-        },
-        mail: {
-          description: "Mail".magenta
-        },
-        testfw: {
-          description: "Testing framework".magenta
-        },
-        travis: {
-          description: "Use travis?(Y/n)".magenta,
-          default: 'Y'
-        },
-        readme: {
-          description: "README style".magenta,
-          default: 'README.md'
-        },
-        license: {
-          description: "License".magenta,
-          default: 'MIT'
+        properties: {
+            github: {
+                description: "GitHub username".magenta
+            },
+            author: {
+                description: "Author".magenta
+            },
+            mail: {
+                description: "Mail".magenta
+            },
+            testfw: {
+                description: "Testing framework".magenta
+            },
+            travis: {
+                description: "Use travis?(Y/n)".magenta,
+                default: 'Y'
+            },
+            readme: {
+                description: "README style".magenta,
+                default: 'README.md'
+            },
+            license: {
+                description: "License".magenta,
+                default: 'MIT'
+            }
         }
-      }
     }, function (err, result) {
-      if (err) throw err;
+        if (err) throw err;
 
-      var modinit = new Modinit();
-      var modinitrc = modinit.create(result);
-      if (modinitrc) {
-        console.log("");
-        console.log("GitHub username: " + result.github.cyan);
-        console.log("Author: " + result.author.cyan);
-        console.log("Mail: " + result.mail.cyan);
-        console.log("Testing framework: " + result.testfw.cyan);
-        console.log("Use travis: " + result.travis.cyan);
-        console.log("README style: " + result.readme.cyan);
-        console.log("License: " + result.license.cyan);
-
-        fs.writeFile('./modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
-          if (err) throw err;
-          else {
+        var modinit = new Modinit();
+        var modinitrc = modinit.create(result);
+        if (modinitrc) {
             console.log("");
-            console.log("Success! Create 'modinit.json'".green);
-          }
-        });
-      }
+            console.log("GitHub username: " + result.github.cyan);
+            console.log("Author: " + result.author.cyan);
+            console.log("Mail: " + result.mail.cyan);
+            console.log("Testing framework: " + result.testfw.cyan);
+            console.log("Use travis: " + result.travis.cyan);
+            console.log("README style: " + result.readme.cyan);
+            console.log("License: " + result.license.cyan);
+
+            fs.writeFile('./modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
+                if (err) throw err;
+                else {
+                    console.log("");
+                    console.log("Success! Create 'modinit.json'".green);
+                }
+            });
+        }
     });
-  });
+});
 
 program
-  .command('init <moduleName>')
-  .description('scaffold node packaged module')
-  .action(function (moduleName) {
+.command('init <moduleName>')
+.description('scaffold node packaged module')
+.action(function (moduleName) {
     prompt.message = '[?]'.magenta;
     prompt.delimiter = ':';
 
     prompt.start();
 
     prompt.get({
-      properties: {
-        moduleName: {
-          description: "module name".magenta,
-          default: moduleName
-        },
-        description: {
-          description: "description".magenta
-        },
-        keywords: {
-          description: "keywords".magenta
+        properties: {
+            moduleName: {
+                description: "module name".magenta,
+                default: moduleName
+            },
+            description: {
+                description: "description".magenta
+            },
+            keywords: {
+                description: "keywords".magenta
+            }
         }
-      }
-    }, function (err, result) {
-      var modinitrc = fs.readFileSync('./modinit.json').toString();
-      modinitrc = JSON.parse(modinitrc);
-      var options = {};
-      if (program.bin) options.bin = program.bin;
+    },
+    function (err, result) {
+        var modinitrc = fs.readFileSync('./modinit.json').toString();
+        modinitrc = JSON.parse(modinitrc);
+        var options = {};
+        if (program.bin) options.bin = program.bin;
 
-      var modinit = new Modinit();
-      var templates = modinit.template(result, modinitrc, result, options);
-      if (modinit.build(templates)) {
-        console.log('scaffold!!');
-      }
+        var modinit = new Modinit();
+        var templates = modinit.template(result, modinitrc, result, options);
+        if (modinit.build(templates)) {
+            console.log('scaffold!!');
+        }
     });
-  });
+});
+
+program
+.command('rename <moduleName>')
+.description('rename module name')
+.action(function (moduleName) {
+    var modinit = new Modinit();
+    modinit.rename(moduleName);
+});
 
 program.parse(process.argv);
