@@ -174,6 +174,7 @@ Modinit.prototype.rename = function (afterModName) {
         fs.writeFile(changeFile, renamed, function (err) {
             if (err) throw err;
         });
-        console.log("Renamed to " + afterModName);
     });
+
+    console.log("Renamed to " + afterModName);
 };
