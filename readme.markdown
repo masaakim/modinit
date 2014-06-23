@@ -46,6 +46,12 @@ And, initialize module based on your `modinit.json`.
 $ modinit init <module-name>
 ```
 
+Rename module name:
+
+```shell
+$ modinit rename <new-module-name>
+```
+
 ##License
 
 The MIT License (MIT)
