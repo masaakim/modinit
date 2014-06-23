@@ -155,17 +155,30 @@ Modinit.prototype.build = function (templates) {
 };
 
 Modinit.prototype.rename = function (afterModName) {
-    beforeModName = path.basename(process.cwd());
+    var beforeModName = path.basename(process.cwd());
+    var BeforeModName = beforeModName.charAt(0).toUpperCase() + beforeModName.slice(1);
+    var AfterModName = afterModName.charAt(0).toUpperCase() + afterModName.slice(1);
+
+    console.log(beforeModName)
+    console.log(BeforeModName)
+    console.log(AfterModName)
 
     changeFiles = [
-        './package.json',
-        './readme.markdown',
-        './test/index.js',
-        './index.js'
+         './package.json',
+         './readme.markdown',
+         './test/index.js',
+         './index.js'
     ];
 
     changeFiles.forEach(function (changeFile) {
         var fileStr = fs.readFileSync(changeFile).toString();
-        fileStr.replace(beforeModName, afterModName);
+        var renamed = fileStr.replace(new RegExp(beforeModName, 'g'), afterModName);
+        renamed = renamed.replace(new RegExp(BeforeModName, 'g'), AfterModName);
+        console.log(renamed)
+        /*
+        fs.writeFileSync(changeFile, after, function (err) {
+            if (err) throw err;
+        });
+       */
     });
 };
