@@ -153,3 +153,20 @@ Modinit.prototype.build = function (templates) {
 
   return true;
 };
+
+Modinit.prototype.rename = function (afterModName) {
+    beforeModName = path.basename(process.pwd);
+    console.log(beforeModName)
+
+    changeFiles = [
+        './package.json',
+        './readme.markdown',
+        './test/index.js',
+        './index.js'
+    ];
+
+    changeFiles.forEach(function (changeFile) {
+        var fileStr = fs.readFileSync(changeFile).toString();
+        // fileStr.replace(beforeModName, afterModName);
+    });
+};
