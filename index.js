@@ -33,7 +33,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
 
   var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
   var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
-  var license = _.template(fs.readFileSync(templatePath + '/LICENSE').toString());
+  var license = _.template(fs.readFileSync(templatePath + '/license').toString());
   var cmd = _.template(fs.readFileSync(templatePath + '/cmd.js').toString());
   var test = _.template(fs.readFileSync(templatePath + '/test.js').toString());
   var _index = fs.readFileSync(templatePath + '/_index.js').toString();
