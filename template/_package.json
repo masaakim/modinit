@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tape test"
-  },<% if (cmd) { %>
+  },<% if (cli) { %>
   "bin": {
     "<%= moduleName %>": "bin/<%= moduleName %>"
   },<% } %>
