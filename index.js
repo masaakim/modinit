@@ -101,12 +101,6 @@ Modinit.prototype.build = function (templates) {
     if (err) throw err;
   });
 
-  if (templates.cli) {
-    mkdirp(templates.moduleName + '/bin', function (err) {
-      if (err) throw err;
-    });
-  }
-
   mkdirp(templates.moduleName + '/test', function (err) {
     if (err) throw err;
   });
