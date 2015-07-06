@@ -30,9 +30,6 @@ program
             mail: {
                 description: "Mail".magenta
             },
-            testfw: {
-                description: "Testing framework".magenta
-            },
             travis: {
                 description: "Use travis?(Y/n)".magenta,
                 default: 'Y'
