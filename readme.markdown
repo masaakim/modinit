@@ -27,18 +27,10 @@ Ex:
   "mail": "ikasama3.0@gmail.com",
   "license": "MIT",
   "readme": "readme.markdown",
-  "test": "tape",
   "travis": true
 }
 ```
 
-Supporting Testing FW:
-
-- tape
-
-comming soon:
-
-- mocha
 
 And, initialize module based on your `modinit.json`.
 
@@ -56,4 +48,4 @@ $ modinit rename <new-module-name>
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Masaaki Morishita
+Copyright (c) 2014-2015 Masaaki Morishita
