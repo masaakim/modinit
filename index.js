@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
@@ -33,7 +32,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   var readme = _.template(fs.readFileSync(templatePath + '/readme.markdown').toString());
   var _package = _.template(fs.readFileSync(templatePath + '/_package.json').toString());
   var license = _.template(fs.readFileSync(templatePath + '/license').toString());
-  var cmd = _.template(fs.readFileSync(templatePath + '/cmd.js').toString());
+  var cli = _.template(fs.readFileSync(templatePath + '/cli.js').toString());
   var test = _.template(fs.readFileSync(templatePath + '/test.js').toString());
   var _index = fs.readFileSync(templatePath + '/_index.js').toString();
   var travis = fs.readFileSync(templatePath + '/travis.yml').toString();
@@ -64,8 +63,8 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
     'author': modinitrc.author,
     'keywords': keywords
   };
-  if (options.bin) package_obj['cmd'] = true;
-  else package_obj['cmd'] = false;
+  if (options.bin) package_obj['cli'] = true;
+  else package_obj['cli'] = false;
 
   _package = _package(package_obj);
 
@@ -73,7 +72,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
     'author': modinitrc.author
   });
 
-  cmd = cmd({
+  cli = cli({
     'moduleName': moduleVarName
   });
 
@@ -91,7 +90,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   res.test = test;
   res.moduleName = moduleName;
   res.moduleVarName = moduleVarName;
-  if (options.bin) res.cmd = cmd;
+  if (options.bin) res.cli = cli;
   if (modinitrc.travis) res.travis = travis;
 
   return res;
@@ -102,7 +101,7 @@ Modinit.prototype.build = function (templates) {
     if (err) throw err;
   });
 
-  if (templates.cmd) {
+  if (templates.cli) {
     mkdirp(templates.moduleName + '/bin', function (err) {
       if (err) throw err;
     });
@@ -137,8 +136,8 @@ Modinit.prototype.build = function (templates) {
     if (err) throw err;
   });
 
-  if (templates.cmd) {
-    fs.writeFile(templates.moduleName + '/bin/' + templates.moduleName, templates.cmd, function (err) {
+  if (templates.cli) {
+    fs.writeFile(templates.moduleName + '/cli.js', templates.cli, function (err) {
       if (err) throw err;
     });
   }
