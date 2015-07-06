@@ -21,7 +21,6 @@ Modinit.prototype.create = function (res) {
     "github": res.github,
     "author": res.author,
     "mail": res.mail,
-    "testfw": res.testfw,
     "travis": travis,
     "readme": res.readme,
     "license": res.license
@@ -79,7 +78,6 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   });
 
   test = test({
-    'testfw': modinitrc.testfw,
     'moduleName': moduleVarName
   });
 
