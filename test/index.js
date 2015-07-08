@@ -1,5 +1,4 @@
-
-var test = require('colored-tape');
+var test = require('tape');
 var Modinit = require('../');
 var modinit = new Modinit();
 
