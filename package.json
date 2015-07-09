@@ -4,7 +4,7 @@
   "description": "Initialize node packaged module",
   "main": "index.js",
   "scripts": {
-    "test": "colored-tape test"
+    "test": "tape test"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,6 @@
     "node-prefix": "^0.1.0"
   },
   "devDependencies": {
-    "tap": "^0.4.9",
-    "colored-tape": "^1.0.1"
+    "tape": "^4.0.0"
   }
 }
