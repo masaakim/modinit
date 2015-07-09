@@ -36,6 +36,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   var test = _.template(fs.readFileSync(templatePath + '/test.js').toString());
   var _index = fs.readFileSync(templatePath + '/_index.js').toString();
   var travis = fs.readFileSync(templatePath + '/travis.yml').toString();
+  var editorconfig = fs.readFileSync(templatePath + '/editorconfig').toString();
   var gitignore = fs.readFileSync(templatePath + '/gitignore').toString();
 
   var moduleName = prompt.moduleName;
@@ -87,6 +88,7 @@ Modinit.prototype.template = function (prompt, modinitrc, result, options) {
   res.license = license;
   res._index = _index;
   res.gitignore = gitignore;
+  res.editorconfig = editorconfig;
   res.test = test;
   res.moduleName = moduleName;
   res.moduleVarName = moduleVarName;
@@ -127,6 +129,10 @@ Modinit.prototype.build = function (templates) {
   });
 
   fs.writeFile(templates.moduleName + '/package.json', templates._package, function (err) {
+    if (err) throw err;
+  });
+
+  fs.writeFile(templates.moduleName + '/.editorconfig', templates.editorconfig, function (err) {
     if (err) throw err;
   });
 
