@@ -8,7 +8,7 @@
 $ npm install <%= moduleName %>
 ```
 
-## Example
+## Usage
 
 ## License
 
