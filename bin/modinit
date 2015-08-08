@@ -38,6 +38,10 @@ program
                 description: "README style".magenta,
                 default: 'README.md'
             },
+            changelog: {
+                description: "CHANGELOG style".magenta,
+                default: 'CHANGELOG.md'
+            },
             license: {
                 description: "License".magenta,
                 default: 'MIT'
@@ -55,6 +59,7 @@ program
             console.log("Mail: " + result.mail.cyan);
             console.log("Use travis: " + result.travis.cyan);
             console.log("README style: " + result.readme.cyan);
+            console.log("CHANGELOG style: " + result.changelog.cyan);
             console.log("License: " + result.license.cyan);
 
             fs.writeFile('./modinit.json', JSON.stringify(modinitrc, null, " "), function (err) {
