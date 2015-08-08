@@ -3,29 +3,31 @@ var Modinit = require('../');
 var modinit = new Modinit();
 
 var prompt = {
-  "github": "morishitter",
-  "author": "Masaaki Morishita",
-  "mail": "morishitter@gmail.com",
-  "travis": "Y",
-  "readme": "readme.markdown",
-  "license": "MIT"
+    "github": "morishitter",
+    "author": "Masaaki Morishita",
+    "mail": "morishitter@gmail.com",
+    "travis": "Y",
+    "readme": "readme.markdown",
+    "changelog": "changelog.markdown",
+    "license": "MIT"
 };
 
 var modinitrc;
 
 test('create', function (t) {
-  var result = modinit.create(prompt);
+    var result = modinit.create(prompt);
 
-  var expected = {
-    "github": "morishitter",
-    "author": "Masaaki Morishita",
-    "mail": "morishitter@gmail.com",
-    "travis": true,
-    "readme": "readme.markdown",
-    "license": "MIT"
-  };
+    var expected = {
+        "github": "morishitter",
+        "author": "Masaaki Morishita",
+        "mail": "morishitter@gmail.com",
+        "travis": true,
+        "readme": "readme.markdown",
+        "changelog": "changelog.markdown",
+        "license": "MIT"
+    };
 
-  t.same(result, expected);
+    t.same(result, expected);
 
-  t.end();
+    t.end();
 });
