@@ -24,9 +24,10 @@ Ex:
 {
   "github": "morishitter",
   "author": "Masaaki Morishita",
-  "mail": "ikasama3.0@gmail.com",
+  "mail": "morishitter.0@gmail.com",
   "license": "MIT",
-  "readme": "readme.markdown",
+  "readme": "readme.md",
+  "changelog": "changelog.md",
   "travis": true
 }
 ```
