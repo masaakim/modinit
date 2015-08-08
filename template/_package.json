@@ -1,6 +1,6 @@
 {
   "name": "<%= moduleName %>",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "<%= description %>",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,5 @@
   },
   "keywords": <%= JSON.stringify(keywords) %>,
   "author": "<%= author %>",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-  }
+  "license": "MIT"
 }

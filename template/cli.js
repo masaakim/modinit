@@ -21,7 +21,7 @@ if (argv.V) {
 }
 
 if (argv.h) {
-    console.log('Usage: atcss input-name output-name [options]');
+    console.log('Usage: <%= moduleName %> [options]');
     console.log('');
     console.log('Options:');
     console.log('');
