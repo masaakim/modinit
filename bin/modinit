@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
+var spawnSync = require('child_process').spawnSync;
 var program = require('commander');
 var prompt = require('prompt');
 var pkg = require('../package.json');
@@ -105,7 +106,8 @@ program
         var modinit = new Modinit();
         var templates = modinit.template(result, modinitrc, result, options);
         if (modinit.build(templates)) {
-            console.log('scaffold!!');
+            spawnSync('git', ['init']);
+            console.log('scaffolded!!');
         }
     });
 });
