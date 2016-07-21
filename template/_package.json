@@ -4,7 +4,15 @@
   "description": "<%= description %>",
   "main": "index.js",
   "scripts": {
-    "test": "tape test"
+    "test": "ava"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ],
+    "failFast": true,
+    "tap": true,
+    "verbose": true
   },<% if (cli) { %>
   "bin": {
     "<%= moduleName %>": "cli.js"
